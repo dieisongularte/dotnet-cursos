@@ -1,8 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "/vRFyUkl7CrJvugzG3cp7wA8e7QJNV3HWZfUBWA4JdSnbQk+h58bw4Aq/qrlO+vYySWS8pCYnId/3uoHFQOCZA==",
+  "dgSpecHash": "yUPVUSEuQfcfvba0m+51Moy46Rq0yJzJ/HujQxHw/ROxUKv19yUqVhupUKkElwlhuOLVz5TOp6s5bL2eiGKuNQ==",
   "success": true,
   "projectFilePath": "C:\\DIO\\DIO.Cursos\\DIO.Cursos.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\dieis\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\dieis\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\dieis\\.nuget\\packages\\swashbuckle.aspnetcore\\6.1.1\\swashbuckle.aspnetcore.6.1.1.nupkg.sha512",
+    "C:\\Users\\dieis\\.nuget\\packages\\swashbuckle.aspnetcore.annotations\\6.1.1\\swashbuckle.aspnetcore.annotations.6.1.1.nupkg.sha512",
+    "C:\\Users\\dieis\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.1.1\\swashbuckle.aspnetcore.swagger.6.1.1.nupkg.sha512",
+    "C:\\Users\\dieis\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.1.1\\swashbuckle.aspnetcore.swaggergen.6.1.1.nupkg.sha512",
+    "C:\\Users\\dieis\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.1.1\\swashbuckle.aspnetcore.swaggerui.6.1.1.nupkg.sha512"
+  ],
   "logs": []
 }
