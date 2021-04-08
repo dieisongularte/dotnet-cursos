@@ -12,6 +12,9 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
+using DIO.Cursos.Infraestrutura.Data;
+using Microsoft.EntityFrameworkCore;
+using DIO.Cursos.Business.Entities;
 
 namespace DIO.Cursos.Controllers
 {
@@ -62,6 +65,17 @@ namespace DIO.Cursos.Controllers
         [ValidacaoModelStateCustomizado]
         public IActionResult Registrar(RegistroViewModelInput registroViewModelInput)
         {
+            var optionsBuilder = new DbContextOptionsBuilder<CursoDbContext>();
+            optionsBuilder.UseSqlServer("Server=localhost;Database=CURSO;user=sa;password=");
+            CursoDbContext context = new CursoDbContext(optionsBuilder.Options);
+
+            var usuario = new Usuario();
+            usuario.Login = registroViewModelInput.Login;
+            usuario.Senha = registroViewModelInput.Senha;
+            usuario.Email = registroViewModelInput.Email;
+            context.Usuario.Add(usuario);
+            context.SaveChanges();
+
             return Created("", registroViewModelInput);
         }
     }
