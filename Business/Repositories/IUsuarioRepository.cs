@@ -6,5 +6,6 @@ namespace DIO.Cursos.Business.Repositories
     {
         void Adicionar(Usuario usuario);
         void Commit();
+        Usuario ObterUsuario(string login);
     }
 }

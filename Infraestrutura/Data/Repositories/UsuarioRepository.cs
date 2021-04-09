@@ -1,5 +1,6 @@
 ﻿using DIO.Cursos.Business.Entities;
 using DIO.Cursos.Business.Repositories;
+using System.Linq;
 
 namespace DIO.Cursos.Infraestrutura.Data.Repositories
 {
@@ -20,6 +21,11 @@ namespace DIO.Cursos.Infraestrutura.Data.Repositories
         public void Commit()
         {
             _context.SaveChanges();
+        }
+
+        public Usuario ObterUsuario(string login)
+        {
+            return _context.Usuario.FirstOrDefault(u => u.Login == login);
         }
     }
 }
