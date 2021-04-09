@@ -15,6 +15,7 @@ using System.IdentityModel.Tokens.Jwt;
 using DIO.Cursos.Infraestrutura.Data;
 using Microsoft.EntityFrameworkCore;
 using DIO.Cursos.Business.Entities;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace DIO.Cursos.Controllers
 {
@@ -60,6 +61,9 @@ namespace DIO.Cursos.Controllers
             });
         }
 
+        [SwaggerResponse(statusCode: 200, description: "Sucesso ao registrar", Type = typeof(LoginViewModelInput))]
+        [SwaggerResponse(statusCode: 400, description: "Campos obrigatórios", Type = typeof(ValidaCampoViewModelOutput))]
+        [SwaggerResponse(statusCode: 500, description: "Erro interno", Type = typeof(ErroGenericoViewModel))]
         [HttpPost]
         [Route("registrar")]
         [ValidacaoModelStateCustomizado]
@@ -68,6 +72,13 @@ namespace DIO.Cursos.Controllers
             var optionsBuilder = new DbContextOptionsBuilder<CursoDbContext>();
             optionsBuilder.UseSqlServer("Server=localhost;Database=CURSO;user=sa;password=");
             CursoDbContext context = new CursoDbContext(optionsBuilder.Options);
+
+            var migracoesPendentes = context.Database.GetPendingMigrations();
+
+            if (migracoesPendentes.Count() > 0)
+            {
+                context.Database.Migrate();
+            }
 
             var usuario = new Usuario();
             usuario.Login = registroViewModelInput.Login;

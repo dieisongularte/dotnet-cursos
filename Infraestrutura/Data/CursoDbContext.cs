@@ -1,10 +1,6 @@
 ﻿using DIO.Cursos.Business.Entities;
 using DIO.Cursos.Infraestrutura.Data.Mappings;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace DIO.Cursos.Infraestrutura.Data
 {
