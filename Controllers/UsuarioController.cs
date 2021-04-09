@@ -16,6 +16,7 @@ using DIO.Cursos.Infraestrutura.Data;
 using Microsoft.EntityFrameworkCore;
 using DIO.Cursos.Business.Entities;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using DIO.Cursos.Business.Repositories;
 
 namespace DIO.Cursos.Controllers
 {
@@ -23,6 +24,13 @@ namespace DIO.Cursos.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
+        private readonly IUsuarioRepository _usuarioRepository;
+
+        public UsuarioController(IUsuarioRepository usuarioRepository)
+        {
+            _usuarioRepository = usuarioRepository;
+        }
+
         [SwaggerResponse(statusCode: 200, description: "Sucesso ao autenticar", Type = typeof(LoginViewModelInput))]
         [SwaggerResponse(statusCode: 400, description: "Campos obrigatórios", Type = typeof(ValidaCampoViewModelOutput))]
         [SwaggerResponse(statusCode: 500, description: "Erro interno", Type = typeof(ErroGenericoViewModel))]
@@ -69,23 +77,19 @@ namespace DIO.Cursos.Controllers
         [ValidacaoModelStateCustomizado]
         public IActionResult Registrar(RegistroViewModelInput registroViewModelInput)
         {
-            var optionsBuilder = new DbContextOptionsBuilder<CursoDbContext>();
-            optionsBuilder.UseSqlServer("Server=localhost;Database=CURSO;user=sa;password=");
-            CursoDbContext context = new CursoDbContext(optionsBuilder.Options);
-
-            var migracoesPendentes = context.Database.GetPendingMigrations();
+            /*var migracoesPendentes = _context.Database.GetPendingMigrations();
 
             if (migracoesPendentes.Count() > 0)
             {
-                context.Database.Migrate();
-            }
+                _context.Database.Migrate();
+            }*/
 
             var usuario = new Usuario();
             usuario.Login = registroViewModelInput.Login;
             usuario.Senha = registroViewModelInput.Senha;
             usuario.Email = registroViewModelInput.Email;
-            context.Usuario.Add(usuario);
-            context.SaveChanges();
+            _usuarioRepository.Adicionar(usuario);
+            _usuarioRepository.Commit();
 
             return Created("", registroViewModelInput);
         }
