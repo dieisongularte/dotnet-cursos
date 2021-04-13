@@ -5,13 +5,7 @@ using DIO.Cursos.Filters;
 using DIO.Cursos.Models;
 using DIO.Cursos.Models.Usuarios;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Annotations;
-using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 
 namespace DIO.Cursos.Controllers
 {

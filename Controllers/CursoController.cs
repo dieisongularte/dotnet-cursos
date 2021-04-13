@@ -1,13 +1,9 @@
 ﻿using DIO.Cursos.Business.Entities;
 using DIO.Cursos.Business.Repositories;
-using DIO.Cursos.Configurations;
 using DIO.Cursos.Models.Cursos;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;

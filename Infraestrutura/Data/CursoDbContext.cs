@@ -8,7 +8,6 @@ namespace DIO.Cursos.Infraestrutura.Data
     {
         public CursoDbContext(DbContextOptions<CursoDbContext> options) : base(options)
         {
-
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
